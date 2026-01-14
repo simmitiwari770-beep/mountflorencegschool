@@ -79,6 +79,7 @@ export default function AboutPage() {
         title="About Mount Florence G School"
         subtitle="Our Story"
         description="Excellence in education since our inception. Building a legacy of academic achievement and character development."
+        imageUrl="/download-7.jpeg"
       />
 
       {/* School Overview */}
@@ -90,20 +91,24 @@ export default function AboutPage() {
         description="Mount Florence G School is a progressive educational institution dedicated to delivering quality education through a balanced and holistic approach."
       >
         <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: 'easeOut' }}
-            className="space-y-6 text-navy-700/80 leading-relaxed"
-          >
+          <div className="gradient-border-navy">
+            <div className="gradient-border-content content-gradient-bg">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, ease: 'easeOut' }}
+                className="space-y-6 text-navy-700/80 leading-relaxed p-6"
+              >
             <p className="text-lg">
               Mount Florence G School is a progressive educational institution dedicated to delivering quality education through a balanced and holistic approach. We focus on academic rigor, ethical values, and character building to ensure the overall development of every learner.
             </p>
             <p className="text-lg">
               Our school provides a disciplined yet nurturing atmosphere where students are encouraged to think critically, express creatively, and grow confidently. With experienced educators and modern infrastructure, we aim to build a strong foundation for lifelong learning.
             </p>
-          </motion.div>
+              </motion.div>
+            </div>
+          </div>
         </div>
       </Section>
 
@@ -116,20 +121,24 @@ export default function AboutPage() {
         title="Educational Approach"
         description="Our vision and philosophy guide every aspect of our educational approach, shaping the learning experience for all students."
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-start">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
-            className="bg-white/80 backdrop-blur-sm p-8 md:p-12 border-t border-navy-950/10 hover:border-gold-500/40 transition-colors duration-500"
+            className="transition-colors duration-500 h-full flex"
           >
+            <div className="gradient-border-gold w-full flex flex-col">
+              <div className="gradient-border-content bg-white/80 backdrop-blur-sm p-8 md:p-12 border-t border-navy-950/10 hover:border-gold-500/40 flex flex-col h-full">
             <h3 className="text-2xl font-semibold mb-6 text-navy-950" style={{ letterSpacing: '-0.01em' }}>
               Our Vision
             </h3>
             <p className="text-navy-700/80 leading-relaxed text-lg">
               To be a leading institution recognized for academic excellence, strong values, and holistic education, empowering students to become responsible global citizens.
             </p>
+              </div>
+            </div>
           </motion.div>
 
           <motion.div
@@ -137,14 +146,18 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
-            className="bg-white/80 backdrop-blur-sm p-8 md:p-12 border-t border-navy-950/10 hover:border-gold-500/40 transition-colors duration-500"
+            className="transition-colors duration-500 h-full flex"
           >
+            <div className="gradient-border-gold w-full flex flex-col">
+              <div className="gradient-border-content bg-white/80 backdrop-blur-sm p-8 md:p-12 border-t border-navy-950/10 hover:border-gold-500/40 flex flex-col h-full">
             <h3 className="text-2xl font-semibold mb-6 text-navy-950" style={{ letterSpacing: '-0.01em' }}>
               Our Philosophy
             </h3>
             <p className="text-navy-700/80 leading-relaxed text-lg">
               We believe that education is a transformative journey that shapes character, builds knowledge, and inspires innovation. Our philosophy centers on providing a student-centered learning environment that fosters curiosity, creativity, and critical thinking while instilling strong values and ethical principles.
             </p>
+              </div>
+            </div>
           </motion.div>
         </div>
       </Section>
@@ -165,14 +178,18 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: index * 0.1, ease: 'easeOut' }}
-              className="bg-white/80 backdrop-blur-sm p-8 border-t border-navy-950/10 hover:border-gold-500/40 transition-colors duration-500"
+              className="transition-colors duration-500"
             >
+              <div className="gradient-border">
+                <div className="gradient-border-content bg-white/80 backdrop-blur-sm p-8 border-t border-navy-950/10 hover:border-gold-500/40">
               <h4 className="text-xl font-semibold mb-4 text-navy-950" style={{ letterSpacing: '-0.01em' }}>
                 {value.title}
               </h4>
               <p className="text-navy-700/70 leading-relaxed">
                 {value.description}
               </p>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -195,14 +212,18 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: index * 0.1, ease: 'easeOut' }}
-              className="bg-white/80 backdrop-blur-sm p-8 border-t border-navy-950/10 hover:border-gold-500/40 transition-colors duration-500"
+              className="transition-colors duration-500"
             >
+              <div className="gradient-border">
+                <div className="gradient-border-content bg-white/80 backdrop-blur-sm p-8 border-t border-navy-950/10 hover:border-gold-500/40">
               <h4 className="text-xl font-semibold mb-4 text-navy-950" style={{ letterSpacing: '-0.01em' }}>
                 {item.title}
               </h4>
               <p className="text-navy-700/70 leading-relaxed">
                 {item.description}
               </p>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -218,9 +239,9 @@ export default function AboutPage() {
       >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {[
-            { title: 'Campus View', text: 'Campus' },
-            { title: 'Classrooms', text: 'Classrooms' },
-            { title: 'Activities', text: 'Activities' },
+            { title: 'School Building', text: 'Campus', image: '/gettyim12.jpg' },
+            { title: 'Campus View', text: 'Campus', image: '/campus-view.jpg' },
+            { title: 'Classrooms', text: 'Classrooms', image: '/iStock-1358014313-scaled-1.jpg' },
           ].map((item, index) => (
             <motion.div
               key={item.title}
@@ -231,10 +252,11 @@ export default function AboutPage() {
               className="relative h-[400px] md:h-[450px] overflow-hidden group cursor-pointer"
             >
               <Image
-                src={`https://via.placeholder.com/600/400?text=${item.text}`}
+                src={item.image || `https://via.placeholder.com/600/400?text=${item.text}`}
                 alt={item.title}
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
+                unoptimized={item.image?.startsWith('/')}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute bottom-0 left-0 right-0 p-8 text-white transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">

@@ -38,25 +38,27 @@ const galleryCategories = [
 ]
 
 const galleryImages = [
-  { id: 1, category: 'Campus Life', title: 'School Building', imageSrc: null },
-  { id: 2, category: 'Campus Life', title: 'Main Entrance', imageSrc: null },
-  { id: 3, category: 'Campus Life', title: 'Campus View', imageSrc: null },
-  { id: 4, category: 'School Events', title: 'Annual Day', imageSrc: null },
-  { id: 5, category: 'School Events', title: 'Science Fair', imageSrc: null },
-  { id: 6, category: 'School Events', title: 'Sports Day', imageSrc: null },
+  { id: 1, category: 'Campus Life', title: 'School Building', imageSrc: '/gettyim12.jpg' },
+  { id: 2, category: 'Campus Life', title: 'Main Entrance', imageSrc: '/gettyimages-173598452-612x612.jpg' },
+  { id: 3, category: 'Campus Life', title: 'Campus View', imageSrc: '/campus-view.jpg' },
+  { id: 4, category: 'School Events', title: 'Festival Celebration', imageSrc: '/festival1.jpg' },
+  { id: 21, category: 'Campus Life', title: 'Photo Gallery', imageSrc: '/photogallery.jpg' },
+  { id: 5, category: 'School Events', title: 'Science Fair', imageSrc: '/download-1.jpeg' },
+  { id: 6, category: 'School Events', title: 'Sports Day', imageSrc: '/gallery-sports-meet.jpg' },
   { id: 19, category: 'School Events', title: 'Annual Sports Meet', imageSrc: '/gallery-sports-meet.jpg' },
-  { id: 7, category: 'Co-Curricular Activities', title: 'Art Exhibition', imageSrc: null },
-  { id: 8, category: 'Co-Curricular Activities', title: 'Music Performance', imageSrc: null },
-  { id: 9, category: 'Co-Curricular Activities', title: 'Dance Recital', imageSrc: null },
-  { id: 10, category: 'Classrooms', title: 'Science Lab', imageSrc: null },
-  { id: 11, category: 'Classrooms', title: 'Computer Lab', imageSrc: null },
-  { id: 12, category: 'Classrooms', title: 'Library', imageSrc: null },
-  { id: 13, category: 'Sports & Physical Development', title: 'Basketball Court', imageSrc: null },
-  { id: 14, category: 'Sports & Physical Development', title: 'Cricket Ground', imageSrc: null },
-  { id: 15, category: 'Sports & Physical Development', title: 'Indoor Games', imageSrc: null },
-  { id: 16, category: 'Academic Activities', title: 'Classroom Session', imageSrc: null },
-  { id: 17, category: 'Academic Activities', title: 'Lab Experiment', imageSrc: null },
-  { id: 18, category: 'Academic Activities', title: 'Presentation', imageSrc: null },
+  { id: 20, category: 'School Events', title: 'Annual Day', imageSrc: '/gettyimages-914084980-612x612.jpg' },
+  { id: 7, category: 'Co-Curricular Activities', title: 'Art Exhibition', imageSrc: '/download-2.jpeg' },
+  { id: 8, category: 'Co-Curricular Activities', title: 'Music Performance', imageSrc: '/gettyimages-914084980-612x612.jpg' },
+  { id: 9, category: 'Co-Curricular Activities', title: 'Dance Recital', imageSrc: '/download-3.jpeg' },
+  { id: 10, category: 'Classrooms', title: 'Science Lab', imageSrc: '/science-lab.jpg' },
+  { id: 11, category: 'Classrooms', title: 'Computer Lab', imageSrc: '/computer-lab-class.png' },
+  { id: 12, category: 'Classrooms', title: 'Library', imageSrc: '/indian-school-kids-and-teacher-teaching-students-book-study-in-library-KX3620.jpg' },
+  { id: 13, category: 'Sports & Physical Development', title: 'Basketball Court', imageSrc: '/pexels-kalistro666-31091356.jpg' },
+  { id: 14, category: 'Sports & Physical Development', title: 'Cricket Ground', imageSrc: '/download-4.jpeg' },
+  { id: 15, category: 'Sports & Physical Development', title: 'Indoor Games', imageSrc: '/download-5.jpeg' },
+  { id: 16, category: 'Academic Activities', title: 'Classroom Session', imageSrc: '/iStock-1358014313-scaled-1.jpg' },
+  { id: 17, category: 'Academic Activities', title: 'Lab Experiment', imageSrc: '/gettyimages-639407632-612x612.jpg' },
+  { id: 18, category: 'Academic Activities', title: 'Presentation', imageSrc: '/download-6.jpeg' },
 ]
 
 export default function GalleryPage() {
@@ -79,6 +81,7 @@ export default function GalleryPage() {
         title="Gallery"
         subtitle="Our School Life"
         description="A glimpse into the vibrant academic and co-curricular life at Mount Florence G School, showcasing our campus, classrooms, activities, and student experiences."
+        imageUrl="/photogallery.jpg"
       />
 
       <Section
@@ -139,13 +142,13 @@ export default function GalleryPage() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, ease: 'easeOut' }}
-              className="col-span-3 md:col-span-2 row-span-2 relative h-[500px] md:h-[600px] overflow-hidden group cursor-pointer"
+              className="col-span-3 md:col-span-2 row-span-2 relative h-[500px] md:h-[600px] overflow-hidden group cursor-pointer rounded-lg border-4 border-navy-200/50 shadow-lg hover:shadow-2xl hover:border-gold-500/60 transition-all duration-500 bg-white p-2"
             >
               <Image
                 src={layoutImages[0].imageSrc || `https://via.placeholder.com/800/600?text=${layoutImages[0].title}`}
                 alt={layoutImages[0].title}
                 fill
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                className="object-cover group-hover:scale-105 transition-transform duration-700 rounded-md"
                 unoptimized={layoutImages[0].imageSrc?.startsWith('/')}
                 sizes="(max-width: 768px) 100vw, 66vw"
               />
@@ -167,13 +170,13 @@ export default function GalleryPage() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: (index + 1) * 0.1, ease: 'easeOut' }}
-              className="col-span-3 md:col-span-1 relative h-[240px] md:h-[290px] overflow-hidden group cursor-pointer"
+              className="col-span-3 md:col-span-1 relative h-[240px] md:h-[290px] overflow-hidden group cursor-pointer rounded-lg border-4 border-navy-200/50 shadow-lg hover:shadow-2xl hover:border-gold-500/60 transition-all duration-500 bg-white p-2"
             >
               <Image
                 src={image.imageSrc || `https://via.placeholder.com/600/450?text=${image.title}`}
                 alt={image.title}
                 fill
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                className="object-cover group-hover:scale-105 transition-transform duration-700 rounded-md"
                 unoptimized={image.imageSrc?.startsWith('/')}
                 sizes="(max-width: 768px) 100vw, 33vw"
               />
@@ -194,13 +197,13 @@ export default function GalleryPage() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: (index + 3) * 0.1, ease: 'easeOut' }}
-              className="col-span-3 md:col-span-1 relative h-[240px] md:h-[280px] overflow-hidden group cursor-pointer"
+              className="col-span-3 md:col-span-1 relative h-[240px] md:h-[280px] overflow-hidden group cursor-pointer rounded-lg border-4 border-navy-200/50 shadow-lg hover:shadow-2xl hover:border-gold-500/60 transition-all duration-500 bg-white p-2"
             >
               <Image
                 src={image.imageSrc || `https://via.placeholder.com/600/450?text=${image.title}`}
                 alt={image.title}
                 fill
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                className="object-cover group-hover:scale-105 transition-transform duration-700 rounded-md"
                 unoptimized={image.imageSrc?.startsWith('/')}
                 sizes="(max-width: 768px) 100vw, 33vw"
               />
@@ -227,13 +230,13 @@ export default function GalleryPage() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: index * 0.05, ease: 'easeOut' }}
-                className="relative aspect-[4/3] overflow-hidden group cursor-pointer"
+                className="relative aspect-[4/3] overflow-hidden group cursor-pointer rounded-lg border-4 border-navy-200/50 shadow-lg hover:shadow-2xl hover:border-gold-500/60 transition-all duration-500 bg-white p-2"
               >
                 <Image
                   src={image.imageSrc || `https://via.placeholder.com/600/450?text=${image.title}`}
                   alt={image.title}
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700 rounded-md"
                   unoptimized={image.imageSrc?.startsWith('/')}
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />

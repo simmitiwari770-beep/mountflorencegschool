@@ -81,6 +81,7 @@ export default function AdmissionsPage() {
         title="Admissions"
         subtitle="Join Our Community"
         description="Mount Florence G School welcomes students who seek a balanced education rooted in academic excellence, discipline, and strong values."
+        imageUrl="/admissions-hero.jpg"
       />
 
       {/* Admissions Overview */}
@@ -98,9 +99,13 @@ export default function AdmissionsPage() {
           transition={{ duration: 0.7, ease: 'easeOut' }}
           className="max-w-4xl mx-auto text-center mb-20"
         >
-          <p className="text-lg text-navy-700/80 leading-relaxed">
+          <div className="gradient-border-gold">
+            <div className="gradient-border-content content-gradient-bg p-8">
+              <p className="text-lg text-navy-700/80 leading-relaxed">
             Admission is granted based on availability of seats and fulfillment of school admission criteria. We welcome students who share our commitment to excellence and growth.
           </p>
+            </div>
+          </div>
         </motion.div>
       </Section>
 
@@ -173,8 +178,10 @@ export default function AdmissionsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
-            className="bg-white/80 backdrop-blur-sm p-12 border-t border-navy-950/10"
+            className=""
           >
+            <div className="gradient-border-navy">
+              <div className="gradient-border-content bg-white/80 backdrop-blur-sm p-12 border-t border-navy-950/10">
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {requiredDocuments.map((doc, index) => (
                 <motion.li
@@ -190,6 +197,8 @@ export default function AdmissionsPage() {
                 </motion.li>
               ))}
             </ul>
+              </div>
+            </div>
           </motion.div>
         </div>
       </Section>
@@ -209,8 +218,10 @@ export default function AdmissionsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
-            className="bg-white/80 backdrop-blur-sm p-10 md:p-12 border-t border-navy-950/10"
+            className=""
           >
+            <div className="gradient-border-gold">
+              <div className="gradient-border-content bg-white/80 backdrop-blur-sm p-10 md:p-12 border-t border-navy-950/10">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -315,11 +326,13 @@ export default function AdmissionsPage() {
                 className="w-full px-8 py-4 bg-navy-950 hover:bg-navy-800 text-white font-medium transition-colors duration-500 disabled:opacity-50 disabled:cursor-not-allowed border border-navy-950 hover:border-navy-800 uppercase tracking-wider text-sm"
               >
                 {isSubmitting ? 'Submitting...' : 'Submit Enquiry'}
-              </button>
-            </form>
+                </button>
+              </form>
+              </div>
+            </div>
           </motion.div>
-        </div>
-      </Section>
-    </div>
-  )
-}
+          </div>
+        </Section>
+      </div>
+    )
+  }

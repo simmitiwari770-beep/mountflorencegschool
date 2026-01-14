@@ -12,18 +12,18 @@ const highlights = [
     description:
       'Our dedicated team of educators brings years of expertise and passion for teaching.',
     icon: 'faculty',
-    color: 'text-logo-green-600',
-    bgColor: 'bg-logo-green-50',
-    borderColor: 'border-logo-green-500',
+    color: 'text-green-600',
+    bgColor: 'bg-green-50',
+    borderColor: 'border-green-500',
   },
   {
     title: 'Holistic Education',
     description:
       'We nurture not just academic excellence but also character, creativity, and confidence.',
     icon: 'education',
-    color: 'text-logo-light-blue-600',
-    bgColor: 'bg-logo-light-blue-50',
-    borderColor: 'border-logo-light-blue-500',
+    color: 'text-blue-600',
+    bgColor: 'bg-blue-50',
+    borderColor: 'border-blue-500',
   },
   {
     title: 'Modern Infrastructure',
@@ -87,28 +87,34 @@ const academicStreams = [
 
 const heroSlides = [
   {
-    imageUrl: '/slider-1.jpg',
+    imageUrl: '/gettyim12.jpg',
     quote: 'New Approach to Kids Education',
     title: 'Mount Florence G School',
     subtitle: 'Welcome To Mount Florence G School is a school which would constantly endeavor to change the face of Advanced Education in Mainpuri, Uttar Pradesh.',
   },
   {
-    imageUrl: '/slider-2.jpg',
+    imageUrl: '/slider-1.jpg',
     quote: 'Quality Education for Bright Future',
     title: 'Mount Florence G School',
     subtitle: 'We provide holistic learning environment where academic excellence meets character development, ensuring your child grows into a confident leader.',
   },
   {
-    imageUrl: '/slider-3.jpg',
+    imageUrl: '/slider-2.jpg',
     quote: 'Innovative Teaching Methods',
     title: 'Mount Florence G School',
     subtitle: 'Nurturing Young Minds - Through innovative teaching methods, personalized attention, and a supportive community, we help students discover their passions and excel.',
   },
   {
-    imageUrl: '/slider-4.jpg',
+    imageUrl: '/slider-3.jpg',
     quote: 'Education is the passport to the future, for tomorrow belongs to those who prepare for it today.',
     title: 'Mount Florence G School',
     subtitle: 'Shaping Intellect, Character and Future Leaders',
+  },
+  {
+    imageUrl: '/slider-4.jpg',
+    quote: 'Excellence in Education',
+    title: 'Mount Florence G School',
+    subtitle: 'Building a legacy of academic achievement and character development',
   },
 ]
 
@@ -140,45 +146,49 @@ export default function Home() {
           transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
           className="relative z-10 max-w-4xl mx-auto text-center"
         >
-          <motion.h2 
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="mb-8"
-          >
-            Welcome to Mount Florence G School
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="text-lg text-gray-700 leading-relaxed mb-6"
-          >
-            Mount Florence G School is a centre of academic excellence where
-            knowledge, discipline, and values come together to shape confident
-            and capable individuals. Our institution is committed to providing a
-            structured, inclusive, and future-focused learning environment that
-            nurtures intellectual curiosity and personal growth.
-          </motion.p>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="text-lg text-gray-700 leading-relaxed"
-          >
-            We believe in preparing students not only for academic success but
-            also for life, leadership, and responsible citizenship in a rapidly
-            changing world.
-          </motion.p>
+          <div className="gradient-border-gold">
+            <div className="gradient-border-content content-gradient-bg">
+              <motion.h2 
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+                className="mb-8"
+              >
+                Welcome to Mount Florence G School
+              </motion.h2>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+                className="text-lg text-gray-700 leading-relaxed mb-6"
+              >
+                Mount Florence G School is a centre of academic excellence where
+                knowledge, discipline, and values come together to shape confident
+                and capable individuals. Our institution is committed to providing a
+                structured, inclusive, and future-focused learning environment that
+                nurtures intellectual curiosity and personal growth.
+              </motion.p>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4, duration: 0.6 }}
+                className="text-lg text-gray-700 leading-relaxed"
+              >
+                We believe in preparing students not only for academic success but
+                also for life, leadership, and responsible citizenship in a rapidly
+                changing world.
+              </motion.p>
+            </div>
+          </div>
         </motion.div>
       </Section>
 
       {/* Quick Highlights */}
       <Section id="highlights" title="Why Choose Mount Florence" subtitle="Excellence">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
           {highlights.map((highlight, index) => (
             <motion.div
               key={highlight.title}
@@ -196,39 +206,41 @@ export default function Home() {
                 scale: 1.02,
                 transition: { duration: 0.3 }
               }}
-              className={`relative text-center p-8 bg-white card-shadow rounded-lg hover-lift card-shadow-hover border-t-4 ${highlight.borderColor} overflow-hidden group`}
+              className="relative overflow-hidden group h-full flex"
             >
-              {/* Animated background gradient on hover */}
-              <div className={`absolute inset-0 ${highlight.bgColor} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
-              
-              <motion.div 
-                initial={{ scale: 0, rotate: -180 }}
-                whileInView={{ scale: 1, rotate: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 + 0.3, duration: 0.5, type: "spring" }}
-                whileHover={{ rotate: 360, scale: 1.1 }}
-                className={`relative z-10 w-20 h-20 mx-auto mb-6 ${highlight.bgColor} rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow duration-300`}
-              >
-                <HighlightIcon type={highlight.icon} color={highlight.color} />
-              </motion.div>
-              <motion.h3 
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 + 0.4 }}
-                className="relative z-10 text-xl mb-4 font-semibold"
-              >
-                {highlight.title}
-              </motion.h3>
-              <motion.p 
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 + 0.5 }}
-                className="relative z-10 text-gray-600 leading-relaxed"
-              >
-                {highlight.description}
-              </motion.p>
+              <div className={`w-full p-8 bg-white card-shadow rounded-lg hover-lift card-shadow-hover border-t-4 ${highlight.borderColor} relative flex flex-col flex-grow h-full`}>
+                {/* Animated background gradient on hover */}
+                <div className={`absolute inset-0 ${highlight.bgColor} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
+                
+                <motion.div 
+                  initial={{ scale: 0, rotate: -180 }}
+                  whileInView={{ scale: 1, rotate: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 + 0.3, duration: 0.5, type: "spring" }}
+                  whileHover={{ rotate: 360, scale: 1.1 }}
+                  className={`relative z-10 w-20 h-20 mx-auto mb-6 ${highlight.bgColor} rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow duration-300 flex-shrink-0`}
+                >
+                  <HighlightIcon type={highlight.icon} color={highlight.color} />
+                </motion.div>
+                <motion.h3 
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 + 0.4 }}
+                  className="relative z-10 text-xl mb-4 font-semibold flex-shrink-0 text-left"
+                >
+                  {highlight.title}
+                </motion.h3>
+                <motion.p 
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 + 0.5 }}
+                  className="relative z-10 text-gray-600 leading-relaxed flex-grow text-left"
+                >
+                  {highlight.description}
+                </motion.p>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -245,7 +257,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-900 to-navy-950"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(212,175,55,0.1),transparent_50%)]"></div>
         
-        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
           {academicStreams.map((stream, index) => (
             <motion.div
               key={stream.name}
@@ -263,8 +275,9 @@ export default function Home() {
                 y: -5,
                 transition: { duration: 0.3 }
               }}
-              className="relative bg-white/10 backdrop-blur-md p-8 rounded-xl border border-white/20 hover:border-gold-500/50 hover:bg-white/15 transition-all duration-300 shadow-lg hover:shadow-2xl overflow-hidden group"
+              className="relative overflow-hidden group h-full flex"
             >
+              <div className="relative overflow-hidden rounded-xl border border-white/20 bg-white/10 p-8 shadow-lg backdrop-blur-[12px] transition-all duration-300 hover:border-gold-500/50 hover:bg-white/15 hover:shadow-2xl flex flex-col w-full">
               {/* Shimmer effect on hover */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
               
@@ -273,7 +286,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.15 + 0.2 }}
-                className="relative z-10 text-2xl font-serif mb-4 text-white group-hover:text-gold-400 transition-colors duration-300"
+                className="relative z-10 text-2xl font-serif mb-4 text-white group-hover:text-gold-600 transition-colors duration-300"
               >
                 {stream.name}
               </motion.h3>
@@ -282,10 +295,11 @@ export default function Home() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.15 + 0.3 }}
-                className="relative z-10 text-gray-300 leading-relaxed"
+                className="relative z-10 text-gray-300 leading-relaxed flex-grow"
               >
                 {stream.description}
               </motion.p>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -318,81 +332,85 @@ export default function Home() {
               y: -10,
               transition: { duration: 0.3 }
             }}
-            className="bg-white rounded-xl overflow-hidden group relative border-2 border-gray-200 hover:border-gold-500/60 transition-all duration-300 shadow-lg hover:shadow-2xl"
+            className="overflow-hidden group relative transition-all duration-300"
           >
-            {/* Professional Top Border with animation */}
-            <motion.div 
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-navy-600 via-gold-500 to-navy-600 z-10 origin-left"
-            ></motion.div>
-            
-            {/* Image Container with padding to prevent cutting */}
-            <div className="relative h-52 bg-gradient-to-br from-navy-50 to-gray-100 p-4 overflow-hidden">
-              <motion.div 
-                initial={{ scale: 1.2, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="relative w-full h-full bg-white rounded-lg shadow-inner overflow-hidden"
-              >
-                <Image
-                  src="/chairman.jpg"
-                  alt="Chairman"
-                  fill
-                  className="object-contain group-hover:scale-110 transition-transform duration-700"
-                  unoptimized
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </motion.div>
-            </div>
-            <div className="p-6 bg-white">
-              <motion.h3 
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 }}
-                className="text-xl mb-3 font-semibold text-navy-950 group-hover:text-gold-600 transition-colors duration-300"
-              >
-                Chairman&apos;s Message
-              </motion.h3>
-              <motion.p 
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5 }}
-                className="text-sm text-gray-600 mb-4 leading-relaxed line-clamp-2"
-              >
-                A message of vision, commitment, and dedication to educational excellence from our Chairman.
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.6 }}
-              >
-                <Link
-                  href="/chairman-message"
-                  className="text-sm text-gold-600 font-medium hover:text-gold-700 transition-colors inline-flex items-center group/link"
-                >
-                  Read Message
-                  <motion.svg
-                    className="w-4 h-4 ml-1.5"
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    whileHover={{ x: 5 }}
-                    transition={{ type: "spring", stiffness: 400 }}
+            <div className="gradient-border-gold">
+              <div className="gradient-border-content bg-white rounded-xl border-2 border-gray-200 hover:border-gold-500/60 shadow-lg hover:shadow-2xl relative">
+                {/* Professional Top Border with animation */}
+                <motion.div 
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2, duration: 0.6 }}
+                  className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-navy-600 via-gold-500 to-navy-600 z-10 origin-left"
+                ></motion.div>
+                
+                {/* Image Container with padding to prevent cutting */}
+                <div className="relative h-52 bg-gradient-to-br from-navy-50 to-gray-100 p-4 overflow-hidden">
+                  <motion.div 
+                    initial={{ scale: 1.2, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.3 }}
+                    className="relative w-full h-full bg-white rounded-lg shadow-inner overflow-hidden"
                   >
-                    <path d="M9 5l7 7-7 7" />
-                  </motion.svg>
-                </Link>
-              </motion.div>
+                    <Image
+                      src="/chairman.jpg"
+                      alt="Chairman"
+                      fill
+                      className="object-contain group-hover:scale-110 transition-transform duration-700"
+                      unoptimized
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  </motion.div>
+                </div>
+                <div className="p-6 bg-white">
+                  <motion.h3 
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.4 }}
+                    className="text-xl mb-3 font-semibold text-navy-950 group-hover:text-gold-600 transition-colors duration-300"
+                  >
+                    Chairman&apos;s Message
+                  </motion.h3>
+                  <motion.p 
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.5 }}
+                    className="text-sm text-gray-600 mb-4 leading-relaxed line-clamp-2"
+                  >
+                    A message of vision, commitment, and dedication to educational excellence from our Chairman.
+                  </motion.p>
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.6 }}
+                  >
+                    <Link
+                      href="/chairman-message"
+                      className="text-sm text-gold-600 font-medium hover:text-gold-700 transition-colors inline-flex items-center group/link"
+                    >
+                      Read Message
+                      <motion.svg
+                        className="w-4 h-4 ml-1.5"
+                        fill="none"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        whileHover={{ x: 5 }}
+                        transition={{ type: "spring", stiffness: 400 }}
+                      >
+                        <path d="M9 5l7 7-7 7" />
+                      </motion.svg>
+                    </Link>
+                  </motion.div>
+                </div>
+              </div>
             </div>
           </motion.div>
 
@@ -405,81 +423,85 @@ export default function Home() {
               y: -10,
               transition: { duration: 0.3 }
             }}
-            className="bg-white rounded-xl overflow-hidden group relative border-2 border-gray-200 hover:border-gold-500/60 transition-all duration-300 shadow-lg hover:shadow-2xl"
+            className="overflow-hidden group relative transition-all duration-300"
           >
-            {/* Professional Top Border with animation */}
-            <motion.div 
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-purple-600 via-gold-500 to-orange-600 z-10 origin-right"
-            ></motion.div>
-            
-            {/* Image Container with padding to prevent cutting */}
-            <div className="relative h-52 bg-gradient-to-br from-purple-50 via-orange-50 to-gray-100 p-4 overflow-hidden">
-              <motion.div 
-                initial={{ scale: 1.2, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="relative w-full h-full bg-white rounded-lg shadow-inner overflow-hidden"
-              >
-                <Image
-                  src="/vice.jpg"
-                  alt="Vice Chairperson"
-                  fill
-                  className="object-contain group-hover:scale-110 transition-transform duration-700"
-                  unoptimized
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </motion.div>
-            </div>
-            <div className="p-6 bg-white">
-              <motion.h3 
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 }}
-                className="text-xl mb-3 font-semibold text-navy-950 group-hover:text-gold-600 transition-colors duration-300"
-              >
-                Vice Chairperson&apos;s Message
-              </motion.h3>
-              <motion.p 
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5 }}
-                className="text-sm text-gray-600 mb-4 leading-relaxed line-clamp-2"
-              >
-                Insights and vision for holistic education and student development from our Vice Chairperson.
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.6 }}
-              >
-                <Link
-                  href="/vice-chairperson-message"
-                  className="text-sm text-gold-600 font-medium hover:text-gold-700 transition-colors inline-flex items-center group/link"
-                >
-                  Read Message
-                  <motion.svg
-                    className="w-4 h-4 ml-1.5"
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    whileHover={{ x: 5 }}
-                    transition={{ type: "spring", stiffness: 400 }}
+            <div className="gradient-border-rainbow">
+              <div className="gradient-border-content bg-white rounded-xl border-2 border-gray-200 hover:border-gold-500/60 shadow-lg hover:shadow-2xl relative">
+                {/* Professional Top Border with animation */}
+                <motion.div 
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2, duration: 0.6 }}
+                  className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-purple-600 via-gold-500 to-orange-600 z-10 origin-right"
+                ></motion.div>
+                
+                {/* Image Container with padding to prevent cutting */}
+                <div className="relative h-52 bg-gradient-to-br from-purple-50 via-orange-50 to-gray-100 p-4 overflow-hidden">
+                  <motion.div 
+                    initial={{ scale: 1.2, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.3 }}
+                    className="relative w-full h-full bg-white rounded-lg shadow-inner overflow-hidden"
                   >
-                    <path d="M9 5l7 7-7 7" />
-                  </motion.svg>
-                </Link>
-              </motion.div>
+                    <Image
+                      src="/vice.jpg"
+                      alt="Vice Chairperson"
+                      fill
+                      className="object-contain group-hover:scale-110 transition-transform duration-700"
+                      unoptimized
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  </motion.div>
+                </div>
+                <div className="p-6 bg-white">
+                  <motion.h3 
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.4 }}
+                    className="text-xl mb-3 font-semibold text-navy-950 group-hover:text-gold-600 transition-colors duration-300"
+                  >
+                    Vice Chairperson&apos;s Message
+                  </motion.h3>
+                  <motion.p 
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.5 }}
+                    className="text-sm text-gray-600 mb-4 leading-relaxed line-clamp-2"
+                  >
+                    Insights and vision for holistic education and student development from our Vice Chairperson.
+                  </motion.p>
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.6 }}
+                  >
+                    <Link
+                      href="/vice-chairperson-message"
+                      className="text-sm text-gold-600 font-medium hover:text-gold-700 transition-colors inline-flex items-center group/link"
+                    >
+                      Read Message
+                      <motion.svg
+                        className="w-4 h-4 ml-1.5"
+                        fill="none"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        whileHover={{ x: 5 }}
+                        transition={{ type: "spring", stiffness: 400 }}
+                      >
+                        <path d="M9 5l7 7-7 7" />
+                      </motion.svg>
+                    </Link>
+                  </motion.div>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -494,10 +516,10 @@ export default function Home() {
       >
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
           {[
-            { id: 1, src: '/mf17.jpg', alt: 'Campus Life' },
-            { id: 2, src: '/gallery-sports-meet.jpg', alt: 'Annual Sports Meet' },
-            { id: 3, src: '/mf20.jpg', alt: 'Campus Life' },
-            { id: 4, src: '/mf9.jpg', alt: 'Campus Life' },
+            { id: 1, src: '/photogallery.jpg', alt: 'Photo Gallery' },
+            { id: 2, src: '/festival1.jpg', alt: 'Festival Celebration' },
+            { id: 3, src: '/gallery-sports-meet.jpg', alt: 'Annual Sports Meet' },
+            { id: 4, src: '/mf20.jpg', alt: 'Campus Life' },
           ].map((item) => (
             <motion.div
               key={item.id}

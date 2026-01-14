@@ -21,7 +21,7 @@ const navigation = [
     name: 'Academics',
     href: '/academics',
     dropdown: [
-      { name: 'Academics Overview', href: '/academics' },
+      { name: 'Academics', href: '/academics' },
       { name: 'Curriculum', href: '/academics/curriculum' },
       { name: 'Teaching Methodology', href: '/academics/teaching-methodology' },
       { name: 'Syllabus', href: '/academics/syllabus' },
@@ -29,14 +29,7 @@ const navigation = [
     ],
   },
   { name: 'Admissions', href: '/admissions' },
-  {
-    name: 'Infrastructure',
-    href: '/infrastructure',
-    dropdown: [
-      { name: 'Infrastructure Overview', href: '/infrastructure' },
-      { name: 'Campus', href: '/infrastructure/campus' },
-    ],
-  },
+  { name: 'Infrastructure', href: '/infrastructure' },
   { name: 'Gallery', href: '/gallery' },
   { name: 'Contact', href: '/contact' },
 ]
@@ -47,6 +40,7 @@ export default function Header() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
   const pathname = usePathname()
   const dropdownRef = useRef<HTMLDivElement>(null)
+  const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,17 +52,40 @@ export default function Header() {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setOpenDropdown(null)
+      if (dropdownRef.current) {
+        const target = event.target as HTMLElement
+        // Don't close if clicking on a link (let navigation happen)
+        if (target.closest('a[href]')) {
+          return
+        }
+        // Only close if click is truly outside the dropdown
+        if (!dropdownRef.current.contains(target)) {
+          setOpenDropdown(null)
+        }
       }
     }
 
     if (openDropdown) {
-      document.addEventListener('mousedown', handleClickOutside)
+      // Use click event with a slight delay to allow link navigation
+      const timeoutId = setTimeout(() => {
+        document.addEventListener('click', handleClickOutside, true)
+      }, 50)
+      
+      return () => {
+        clearTimeout(timeoutId)
+        document.removeEventListener('click', handleClickOutside, true)
+        // Cleanup timeout on unmount
+        if (closeTimeoutRef.current) {
+          clearTimeout(closeTimeoutRef.current)
+        }
+      }
     }
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
+      // Cleanup timeout on unmount
+      if (closeTimeoutRef.current) {
+        clearTimeout(closeTimeoutRef.current)
+      }
     }
   }, [openDropdown])
 
@@ -113,53 +130,124 @@ export default function Header() {
                     key={item.name}
                     ref={dropdownRef}
                     className="relative"
-                    onMouseEnter={() => setOpenDropdown(item.name)}
-                    onMouseLeave={() => setOpenDropdown(null)}
+                    onMouseEnter={() => {
+                      // Clear any pending close timeout
+                      if (closeTimeoutRef.current) {
+                        clearTimeout(closeTimeoutRef.current)
+                        closeTimeoutRef.current = null
+                      }
+                      setOpenDropdown(item.name)
+                    }}
+                    onMouseLeave={() => {
+                      // Add delay before closing to allow mouse to move to dropdown
+                      closeTimeoutRef.current = setTimeout(() => {
+                        setOpenDropdown(null)
+                      }, 300) // 300ms delay to allow smooth transition
+                    }}
                   >
-                    <button
-                      onClick={() => setOpenDropdown(isDropdownOpen ? null : item.name)}
-                      className={`relative font-medium transition-colors duration-200 flex items-center ${
-                        isActive
-                          ? 'text-gold-600'
-                          : 'text-navy-700 hover:text-gold-600'
-                      }`}
-                    >
-                      {item.name}
-                      <svg
-                        className={`w-4 h-4 ml-1 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`}
-                        fill="none"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
+                    <div className="relative flex items-center">
+                      <Link
+                        href={item.href}
+                        className={`relative font-medium transition-colors duration-200 flex items-center ${
+                          isActive
+                            ? 'text-gold-600'
+                            : 'text-navy-700 hover:text-gold-600'
+                        }`}
                       >
-                        <path d="M19 9l-7 7-7-7" />
-                      </svg>
-                      {isActive && (
-                        <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gold-500" />
-                      )}
-                    </button>
-                    {isDropdownOpen && (
-                      <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
+                        {item.name}
+                        {isActive && (
+                          <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gold-500" />
+                        )}
+                      </Link>
+                      <button
+                        onClick={() => setOpenDropdown(isDropdownOpen ? null : item.name)}
+                        className="ml-1 p-1 -mr-1"
+                        aria-label="Toggle dropdown"
+                      >
+                        <svg
+                          className={`w-4 h-4 transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`}
+                          fill="none"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+                    </div>
+                    <div
+                      className={`absolute top-full left-0 pt-1 w-64 z-50 transition-all duration-300 ease-in-out ${
+                        isDropdownOpen
+                          ? 'opacity-100 visible translate-y-0'
+                          : 'opacity-0 invisible -translate-y-2 pointer-events-none'
+                      }`}
+                      onMouseEnter={() => {
+                        // Clear any pending close timeout when entering dropdown
+                        if (closeTimeoutRef.current) {
+                          clearTimeout(closeTimeoutRef.current)
+                          closeTimeoutRef.current = null
+                        }
+                        setOpenDropdown(item.name)
+                      }}
+                      onMouseLeave={() => {
+                        // Close dropdown when leaving with a longer delay to allow clicks
+                        closeTimeoutRef.current = setTimeout(() => {
+                          setOpenDropdown(null)
+                        }, 500)
+                      }}
+                    >
+                      <div 
+                        className="bg-white rounded-lg shadow-lg border border-gray-200 py-2"
+                        onMouseEnter={() => {
+                          // Keep dropdown open when hovering over menu items
+                          if (closeTimeoutRef.current) {
+                            clearTimeout(closeTimeoutRef.current)
+                            closeTimeoutRef.current = null
+                          }
+                        }}
+                        onMouseLeave={() => {
+                          // Don't close immediately when leaving menu items - give time for clicks
+                          closeTimeoutRef.current = setTimeout(() => {
+                            setOpenDropdown(null)
+                          }, 500)
+                        }}
+                      >
                         {item.dropdown.map((subItem) => {
                           const isSubActive = pathname === subItem.href
                           return (
                             <Link
                               key={subItem.name}
                               href={subItem.href}
-                              className={`block px-4 py-2 text-sm transition-colors ${
+                              className={`block px-4 py-2 text-sm transition-colors duration-200 cursor-pointer ${
                                 isSubActive
                                   ? 'bg-gold-50 text-gold-600 font-semibold'
                                   : 'text-navy-700 hover:bg-gray-50 hover:text-gold-600'
                               }`}
+                              onMouseDown={(e) => {
+                                // Clear any pending close timeout when clicking
+                                if (closeTimeoutRef.current) {
+                                  clearTimeout(closeTimeoutRef.current)
+                                  closeTimeoutRef.current = null
+                                }
+                              }}
+                              onClick={(e) => {
+                                // Clear timeout and close dropdown after navigation starts
+                                if (closeTimeoutRef.current) {
+                                  clearTimeout(closeTimeoutRef.current)
+                                  closeTimeoutRef.current = null
+                                }
+                                // Close dropdown immediately to allow navigation
+                                setOpenDropdown(null)
+                              }}
                             >
                               {subItem.name}
                             </Link>
                           )
                         })}
                       </div>
-                    )}
+                    </div>
                   </div>
                 )
               }

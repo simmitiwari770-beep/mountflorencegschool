@@ -112,6 +112,7 @@ export default function SchoolCalendarPage() {
         title="School Calendar"
         subtitle="Academic Year Schedule"
         description="Our academic calendar is designed to balance rigorous learning with opportunities for rest, reflection, and extracurricular activities."
+        imageUrl="/download-13.jpeg"
       />
 
       {/* Calendar Overview */}

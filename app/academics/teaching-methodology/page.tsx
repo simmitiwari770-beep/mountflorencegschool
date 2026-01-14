@@ -69,6 +69,7 @@ export default function TeachingMethodologyPage() {
         title="Teaching Methodology"
         subtitle="Our Educational Approach"
         description="A student-centered approach designed to create personalized educational experiences that foster growth and understanding."
+        imageUrl="/teaching-methodology-hero.jpg"
       />
 
       {/* Methodology Overview */}
@@ -77,21 +78,38 @@ export default function TeachingMethodologyPage() {
         title="Our Teaching Philosophy"
         description="We believe that effective teaching goes beyond delivering content—it involves inspiring, engaging, and empowering students to become lifelong learners."
       >
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: 'easeOut' }}
-            className="space-y-6 mb-12"
-          >
-            <p className="text-lg text-navy-700/80 leading-relaxed">
-              At Mount Florence G School, our teaching methodology is built on the foundation of student-centered learning. We understand that every student is unique, with different learning styles, interests, and capabilities. Our approach combines traditional teaching excellence with modern pedagogical practices to create an environment where students thrive academically and personally.
-            </p>
-            <p className="text-navy-700/80 leading-relaxed">
-              Our teachers are not just instructors but facilitators of learning, guiding students to discover knowledge, develop critical thinking skills, and apply what they learn in meaningful ways. We emphasize active participation, collaborative learning, and continuous assessment to ensure that every student reaches their full potential.
-            </p>
-          </motion.div>
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center mb-12">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: 'easeOut' }}
+              className="space-y-6"
+            >
+              <p className="text-lg text-navy-700/80 leading-relaxed">
+                At Mount Florence G School, our teaching methodology is built on the foundation of student-centered learning. We understand that every student is unique, with different learning styles, interests, and capabilities. Our approach combines traditional teaching excellence with modern pedagogical practices to create an environment where students thrive academically and personally.
+              </p>
+              <p className="text-navy-700/80 leading-relaxed">
+                Our teachers are not just instructors but facilitators of learning, guiding students to discover knowledge, develop critical thinking skills, and apply what they learn in meaningful ways. We emphasize active participation, collaborative learning, and continuous assessment to ensure that every student reaches their full potential.
+              </p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: 'easeOut' }}
+              className="relative"
+            >
+              <div className="relative overflow-hidden rounded-lg shadow-xl">
+                <img
+                  src="/download (11).jpeg"
+                  alt="Teacher assisting student in classroom"
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            </motion.div>
+          </div>
         </div>
       </Section>
 

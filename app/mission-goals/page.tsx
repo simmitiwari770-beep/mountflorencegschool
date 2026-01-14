@@ -71,6 +71,7 @@ export default function MissionGoalsPage() {
         title="Mission & Goals"
         subtitle="Our Commitment"
         description="Dedicated to educational excellence and holistic student development"
+        imageUrl="/2.jpg"
       />
 
       {/* Mission Statement */}
@@ -87,8 +88,10 @@ export default function MissionGoalsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
-            className="bg-white/80 backdrop-blur-sm p-8 md:p-12 border-t border-navy-950/10"
+            className=""
           >
+            <div className="gradient-border-gold">
+              <div className="gradient-border-content bg-white/80 backdrop-blur-sm p-8 md:p-12 border-t border-navy-950/10">
             <ul className="space-y-4 text-lg text-navy-700/80 leading-relaxed">
               {[
                 'To deliver high-quality education through innovative teaching practices',
@@ -110,6 +113,8 @@ export default function MissionGoalsPage() {
                 </motion.li>
               ))}
             </ul>
+              </div>
+            </div>
           </motion.div>
         </div>
       </Section>
@@ -154,12 +159,16 @@ export default function MissionGoalsPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: index * 0.1, ease: 'easeOut' }}
-              className="bg-white/80 backdrop-blur-sm p-8 border-t border-navy-950/10 hover:border-gold-500/40 transition-colors duration-500"
+              className="transition-colors duration-500"
             >
+              <div className="gradient-border">
+                <div className="gradient-border-content bg-white/80 backdrop-blur-sm p-8 border-t border-navy-950/10 hover:border-gold-500/40">
               <h4 className="text-xl font-semibold mb-4 text-navy-950" style={{ letterSpacing: '-0.01em' }}>
                 {goal.title}
               </h4>
               <p className="text-navy-700/70 leading-relaxed">{goal.description}</p>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -182,12 +191,16 @@ export default function MissionGoalsPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: index * 0.1, ease: 'easeOut' }}
-              className="bg-white/80 backdrop-blur-sm p-8 border-l-4 border-navy-950/20 hover:border-gold-500/60 transition-colors duration-500"
+              className="transition-colors duration-500"
             >
+              <div className="gradient-border-navy">
+                <div className="gradient-border-content bg-white/80 backdrop-blur-sm p-8 border-l-4 border-navy-950/20 hover:border-gold-500/60">
               <h4 className="text-xl font-semibold mb-4 text-navy-950" style={{ letterSpacing: '-0.01em' }}>
                 {item.area}
               </h4>
               <p className="text-navy-700/70 leading-relaxed">{item.focus}</p>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -207,14 +220,18 @@ export default function MissionGoalsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
-            className="bg-white/80 backdrop-blur-sm p-8 md:p-12 border-t border-navy-950/10 hover:border-gold-500/40 transition-colors duration-500"
+            className="transition-colors duration-500"
           >
+            <div className="gradient-border-gold">
+              <div className="gradient-border-content bg-white/80 backdrop-blur-sm p-8 md:p-12 border-t border-navy-950/10 hover:border-gold-500/40">
             <h3 className="text-2xl font-semibold mb-6 text-navy-950" style={{ letterSpacing: '-0.01em' }}>
               Global Perspective
             </h3>
             <p className="text-lg text-navy-700/80 leading-relaxed">
               In an increasingly interconnected world, we prepare our students to think globally while acting locally. Our curriculum incorporates international perspectives, cross-cultural understanding, and awareness of global challenges. We encourage students to appreciate diversity, understand different cultures, and develop the skills needed to thrive in a globalized environment.
             </p>
+              </div>
+            </div>
           </motion.div>
 
           <motion.div

@@ -46,36 +46,40 @@ export default function Section({
             className="text-center mb-12 md:mb-16 relative"
             suppressHydrationWarning
           >
-            {subtitle && (
-              <motion.p 
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1, duration: 0.6 }}
-                className="text-teal-400 font-semibold uppercase tracking-wider text-sm mb-3"
-              >
-                {subtitle}
-              </motion.p>
-            )}
-            {title && (
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2, duration: 0.6 }}
-                className="relative inline-block"
-              >
-                {title}
-                {/* Decorative underline */}
-                <motion.span
-                  initial={{ scaleX: 0 }}
-                  whileInView={{ scaleX: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.5, duration: 0.6 }}
-                  className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-transparent via-gold-500 to-transparent"
-                />
-              </motion.h2>
-            )}
+            <div className="gradient-border-navy inline-block px-8 py-4">
+              <div className="gradient-border-content">
+                {subtitle && (
+                  <motion.p 
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.1, duration: 0.6 }}
+                    className="text-teal-400 font-semibold uppercase tracking-wider text-sm mb-3"
+                  >
+                    {subtitle}
+                  </motion.p>
+                )}
+                {title && (
+                  <motion.h2
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2, duration: 0.6 }}
+                    className="relative inline-block"
+                  >
+                    {title}
+                    {/* Decorative underline */}
+                    <motion.span
+                      initial={{ scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.5, duration: 0.6 }}
+                      className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-transparent via-gold-500 to-transparent"
+                    />
+                  </motion.h2>
+                )}
+              </div>
+            </div>
           </motion.div>
         )}
         {children}

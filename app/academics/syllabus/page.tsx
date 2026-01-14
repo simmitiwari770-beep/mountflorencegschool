@@ -118,6 +118,7 @@ export default function SyllabusPage() {
         title="Syllabus"
         subtitle="Our Academic Curriculum"
         description="A comprehensive syllabus designed to provide structured learning and academic excellence across all levels."
+        imageUrl="/download-12.jpeg"
       />
 
       {/* Syllabus Overview */}

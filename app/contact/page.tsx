@@ -102,6 +102,7 @@ export default function ContactPage() {
         title="Contact Us"
         subtitle="Get in Touch"
         description="We'd love to hear from you. Reach out with any questions or enquiries."
+        imageUrl="/contact-hero.jpg"
       />
 
       <Section
@@ -127,8 +128,10 @@ export default function ContactPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: index * 0.1, ease: 'easeOut' }}
-                className="bg-white/80 backdrop-blur-sm p-6 md:p-8 border-t border-navy-950/10 hover:border-gold-500/40 transition-colors duration-500"
+                className="transition-colors duration-500"
               >
+                <div className="gradient-border-gold">
+                  <div className="gradient-border-content bg-white/80 backdrop-blur-sm p-6 md:p-8 border-t border-navy-950/10 hover:border-gold-500/40">
                 <div className="flex items-start">
                   <div className="mr-4 mt-1">
                     <IconComponent type={info.iconType} />
@@ -140,6 +143,8 @@ export default function ContactPage() {
                     <p className="text-navy-700/80 whitespace-pre-line leading-relaxed">
                       {info.content}
                     </p>
+                  </div>
+                </div>
                   </div>
                 </div>
               </motion.div>
@@ -154,7 +159,8 @@ export default function ContactPage() {
             transition={{ duration: 0.7, ease: 'easeOut' }}
             className="lg:col-span-2"
           >
-            <div className="bg-white/80 backdrop-blur-sm p-8 md:p-12 border-t border-navy-950/10">
+            <div className="gradient-border-navy">
+              <div className="gradient-border-content bg-white/80 backdrop-blur-sm p-8 md:p-12 border-t border-navy-950/10">
               <h3 className="text-2xl font-semibold mb-8 text-navy-950" style={{ letterSpacing: '-0.01em' }}>
                 Send us a Message
               </h3>
@@ -264,6 +270,7 @@ export default function ContactPage() {
                   {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
               </form>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -284,38 +291,23 @@ export default function ContactPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
-            className="relative h-96 bg-navy-950/5 rounded overflow-hidden border border-navy-950/10"
+            className="relative overflow-hidden"
           >
-            <div className="absolute inset-0 flex items-center justify-center text-navy-600/60">
-              <div className="text-center">
-                <svg
-                  className="w-16 h-16 mx-auto mb-4 text-navy-600/40"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="1.5"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                <p className="text-lg font-medium text-navy-700/80">Google Map will be embedded here</p>
-                <p className="text-sm mt-2 text-navy-600/70">
-                  Jail Chauraha, Mainpuri, Uttar Pradesh, India
-                </p>
+            <div className="gradient-border-rainbow">
+              <div className="gradient-border-content relative h-96 bg-navy-950/5 rounded border border-navy-950/10 overflow-hidden">
+                <iframe
+                  src="https://www.google.com/maps?q=Jail+Chauraha,+Mainpuri,+Uttar+Pradesh,+India&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="absolute inset-0 w-full h-full"
+                  title="Mount Florence School Location"
+                />
               </div>
             </div>
-            {/* Placeholder for Google Maps embed */}
-            {/* <iframe
-              src="https://www.google.com/maps/embed?pb=..."
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            /> */}
           </motion.div>
         </div>
       </Section>
