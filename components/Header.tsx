@@ -17,9 +17,26 @@ const navigation = [
       { name: "Vice Chairperson's Message", href: '/vice-chairperson-message' },
     ],
   },
-  { name: 'Academics', href: '/academics' },
+  {
+    name: 'Academics',
+    href: '/academics',
+    dropdown: [
+      { name: 'Academics Overview', href: '/academics' },
+      { name: 'Curriculum', href: '/academics/curriculum' },
+      { name: 'Teaching Methodology', href: '/academics/teaching-methodology' },
+      { name: 'Syllabus', href: '/academics/syllabus' },
+      { name: 'School Calendar', href: '/academics/school-calendar' },
+    ],
+  },
   { name: 'Admissions', href: '/admissions' },
-  { name: 'Infrastructure', href: '/infrastructure' },
+  {
+    name: 'Infrastructure',
+    href: '/infrastructure',
+    dropdown: [
+      { name: 'Infrastructure Overview', href: '/infrastructure' },
+      { name: 'Campus', href: '/infrastructure/campus' },
+    ],
+  },
   { name: 'Gallery', href: '/gallery' },
   { name: 'Contact', href: '/contact' },
 ]
